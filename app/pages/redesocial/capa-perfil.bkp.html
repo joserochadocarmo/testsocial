@@ -1,0 +1,74 @@
+<dom-module id="capa-perfil">
+    <template>
+        <style>
+
+        </style>
+        <!--componente que repassa o usuário logado-->
+        <firebase-auth user="{{user}}" signed-in="{{signedIn}}" on-error="handleError"></firebase-auth>
+
+        <div class="row">
+            <div class="col-md-10 cover">
+                <img src="../../img/nature.jpg" class="cover-img img-responsive" alt="image">
+                <div class="cover-inside cover-blackout text-c text-light">
+                    <img class="cover-avatar size-md img-round" src="{{user.photoURL}}" alt="profile">
+                    <div class="field name font-weight-700"><span class="s-text">{{user.displayName}}</span></div>
+                    <br>
+                    <div class="field place">
+                        <span class="fa fa-map-marker"></span>
+                        <span class="s-text bold">Riviera State 32/106</span>
+                    </div>
+                    <div class="help-block-1 text-c hidden-xs">
+                        <div class="user-icon f-l">
+                            <span class="s-text"><b>190</b> Posts</span>
+                        </div>
+                        <div class="user-icon f-c">
+                            <span class="s-text"><b>50</b> Following</span>
+                        </div>
+                        <div class="user-icon f-r">
+                            <span class="s-text"><b>250</b> Followers</span>
+                        </div>
+                    </div>
+                    <div class="help-block-1 hidden-xs">
+                        <button type="button" class="btn btn-info f-l">Following</button>
+                        <button type="button" class="btn btn-info f-c">Followers</button>
+                        <button type="button" class="btn btn-info f-r">Messages</button>
+                    </div>
+                </div>
+
+                <div class="col-md-22">
+                    <img class="cover-avatar size-md img-round" src="../../img/woman-4.jpg" alt="profile">
+                    <div class="field name font-weight-700"><span class="s-text">Katya Angintiew</span></div>
+                    <br>
+                    <div class="field place">
+                        <span class="s-text">Riviera State 32/106</span>
+                    </div>
+                    <div class="help-block-1 text-c hidden-xs">
+                        <div class="user-icon f-l">
+                            <span class="s-text"><b>190</b> Posts</span>
+                        </div>
+                        <div class="user-icon f-c">
+                            <span class="s-text"><b>50</b> Following</span>
+                        </div>
+                        <div class="user-icon f-r">
+                            <span class="s-text"><b>250</b> Followers</span>
+                        </div>
+                    </div>
+
+                    <div class="help-block-1 hidden-xs">
+                        <button type="button" class="btn btn-info f-l">Following</button>
+                        <button type="button" class="btn btn-info f-c">Followers</button>
+                        <button type="button" class="btn btn-info f-r">Messages</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </template>
+
+    <script>
+        Polymer({
+            is: "capa-perfil"
+        });
+    </script>
+
+</dom-module>

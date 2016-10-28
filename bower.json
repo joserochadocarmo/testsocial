@@ -1,0 +1,24 @@
+{
+  "name": "icon-toggle",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Polymer/element-tutorial",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "polymer": "^1.7.0",
+    "polymerfire": "firebase/polymerfire#^0.9.7",
+    "app-router": "^2.7.1",
+    "bootstrap": "^3.3.7",
+    "animate.css": "^3.5.2",
+    "font-awesome": "fontawesome#^4.6.3",
+    "slideout.js": "https://github.com/mango/slideout.git#^0.1.12",
+    "izimodal": "^1.4.0"
+  }
+}

@@ -1,0 +1,31 @@
+<dom-module id="custom-actions">
+    <style>
+        #btndiv {
+            float: right;
+            margin: 10px auto;
+        }
+    </style>
+    <template>
+        <i class="material-icons" on-tap="_remove">delete</i>{{objeto.descricao}}
+    </template>
+    <script>
+        Polymer({
+            is: 'custom-actions',
+            ready: function() {      
+            },
+            properties: {
+              objeto: Object,
+              notify: true
+            },
+            _remove: function (e) {
+                var parent = this.parentNode;
+                console.log(parent)
+                var modalLogin = document.querySelector('page-feiras');
+                console.log(this.objeto)
+                modalLogin._remove(e);
+                
+
+            }
+        });
+    </script>
+</dom-module>

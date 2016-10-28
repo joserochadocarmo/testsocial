@@ -1,0 +1,175 @@
+<dom-module id="page-feiras">
+    <template>
+        <style>
+            .modal {
+                max-height: 100% !important;
+            }
+        </style>
+        <br>
+        <div class="container">
+
+            <firebase-query id='query' path='/feiras' data='{{data}}'></firebase-query>
+            <!-- Novo cliente. -->
+            <button data-target="modal_save" class="btn modal-trigger">NOVO</button>
+
+            <div id="modal_save" class="modal">
+                <form class="form-horizontal" on-submit='_save'>
+                    <div class="modal-content">
+                        <h4>Cadastro de Feiras - [[feira.descricao]]</h4>
+
+                        <!-- Nome -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="textinput">Descrição</label>
+                            <div class="col-md-6">
+                                <input type="text" placeholder="Coloque aqui o nome" class="form-control input-md" value='{{feira.descricao::input}}' required>
+                            </div>
+                        </div>
+                        <br>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4">
+                                <button type="submit" disabled$="{{!feira.descricao.length}}" class="modal-action modal-close waves-effect waves-light btn">Salvar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="row">
+                <div class="col s12 m12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Listagem de feiras</span>
+                            <p hidden$="{{data.length}}">Nenhum feira cadastrada!</p>
+                            <vaadin-grid>
+                                <table>
+                                    <colgroup>
+                                        <col>
+                                        <col>
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>First</th>
+                                            <th>Last</th>
+                                            <th>Email</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <template is='dom-repeat' items='[[data]]' sort='sortByCreatedTime'>
+                                        <tr>
+                                            <td>[[item.descricao]]</td>
+                                            <td>[[computeTime(item.createdTime)]]</td>
+                                            <td style="cursor: pointer;">
+                                                <i class="material-icons" on-tap="_update">mode_edit</i>
+                                                <i class="material-icons" on-tap="_remove">delete</i>
+                                                <custom-actions objeto="{{item}}" on-tap="_remove"></custom-actions>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                    </tbody>
+                                </table>
+                            </vaadin-grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- listagem -->
+            <div class="row">
+                <div class="col s12 m12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Listagem de feiras</span>
+                            <p hidden$="{{data.length}}">Nenhum feira cadastrada!</p>
+                            <table class="responsive-table" hidden$="{{!data.length}}">
+                                <thead>
+                                    <tr>
+                                        <th>Descrição</th>
+                                        <th>Data Cadastro</th>
+                                        <th><i class="material-icons">more_horiz</i></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template is='dom-repeat' items='[[data]]' sort='sortByCreatedTime'>
+                                        <tr>
+                                            <td>[[item.descricao]]</td>
+                                            <td>[[computeTime(item.createdTime)]]</td>
+                                            <td style="cursor: pointer;">
+                                                <i class="material-icons" on-tap="_update">mode_edit</i>
+                                                <i class="material-icons" on-tap="_remove">delete</i>
+                                                <custom-actions objeto="{{item}}" on-tap="_remove"></custom-actions>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </template>
+
+    <script>
+        Polymer({
+            is: "page-feiras",
+            properties: {
+                feira: {
+                    type: Object,
+                    value: function() {
+                        return {};
+                    }   
+                }
+            },
+             ready: function() {
+                var modalLogin = Polymer.dom(this.root).querySelector('.modal-trigger');
+                $(modalLogin).leanModal();
+            },
+            computeTime: function (unixTime) {
+                return new Date(unixTime).toDateString();
+            },
+            sortByCreatedTime: function (a, b) {
+                return a.createdTime > b.createdTime ? -1 : 1;
+            },
+            _save: function() {
+                event.preventDefault(); //Don't send the form!
+                if(this.feira.$key){
+                    this.feira.updatedAt=firebase.database.ServerValue.TIMESTAMP;
+                    // this.$.query.ref.child(this.feira.$key).update({descricao: this.feira.descricao});
+
+                    var key = this.feira.$key;
+                    delete this.feira.$key;
+                    // delete this.feira.createdTime;
+                    // console.log(JSON.stringify(this.feira));
+                    this.$.query.ref.child(key).update(this.feira);
+                }else{
+                    this.feira.createdTime=firebase.database.ServerValue.TIMESTAMP;
+                    this.$.query.ref.push(this.feira);
+                }
+                
+                this.feira ={};
+            },
+            _update: function(e){
+                this.feira= e.model.item;
+                console.log(this.feira);
+            },
+            _remove: function(e){
+                this.$.query.ref.child(e.model.item.$key).remove()
+                .then(function() {
+                    console.log("Remove succeeded.")
+                })
+                .catch(function(error) {
+                    console.log("Remove failed: " + error.message)
+                });
+            }
+
+        });
+    </script>
+
+</dom-module>

@@ -1,0 +1,115 @@
+
+.content-item {
+    padding:30px 0;
+}
+
+.content-item.grey {
+	background-color:#F0F0F0;
+	padding:50px 0;
+	height:100%;
+}
+
+.content-item h2 {
+	font-weight:700;
+	font-size:35px;
+	line-height:45px;
+	margin:20px 0;
+}
+
+.content-item h3 {
+	font-weight:400;
+	font-size:20px;
+	color:#555555;
+	margin:10px 0 15px;
+	padding:0;
+}
+
+.content-headline {
+	height:1px;
+	text-align:center;
+	margin:20px 0 70px;
+}
+
+.content-headline h2 {
+	display:inline-block;
+	margin:-20px auto 0;
+	padding:0 20px;
+}
+
+.grey .content-headline h2 {
+	background-color:#F0F0F0;
+}
+
+.content-headline h3 {
+	font-size:14px;
+	color:#AAAAAA;
+	display:block;
+}
+
+
+#gallery .row {
+    margin:0;
+}
+
+#gallery .row > div {
+	padding:0;
+}
+
+#gallery .overlay-wrapper:hover .overlay {
+	background-color:rgba(0,0,0,0.7);
+}
+
+#gallery-item h2 {
+	font-size:28px;
+	margin-top:0;
+}
+
+#gallery-item img {
+	background-color:#FFFFFF;
+	border:3px solid #999999;
+	padding:7px;
+}
+
+.overlay-wrapper {
+    position:relative;
+}
+
+.overlay-wrapper .overlay {
+    bottom:0;
+    left:0;
+    opacity:0;
+    overflow:hidden;
+    position:absolute;
+    right:0;
+    top:0;
+	text-align:center;
+	padding-top:25%;
+	transition:all 0.4s ease;
+}
+
+.overlay-wrapper .overlay a {
+	font-size:20px;
+	width:50px;
+	height:50px;
+	color:#FFFFFF;
+	display:inline-block;
+	text-align:center;
+	padding-top:12px;
+	border-radius:50%;
+	margin-right:15px;
+	opacity:0.8;
+}
+
+.overlay-wrapper .overlay a:last-child {
+	margin-right:0;
+}
+
+.overlay-wrapper .overlay a:hover {
+	background-color:#333333;
+	color:#FFFFFF;
+}
+
+.overlay-wrapper:hover .overlay {
+	background-color:rgba(0,0,0,0.5);
+	opacity:1;
+}

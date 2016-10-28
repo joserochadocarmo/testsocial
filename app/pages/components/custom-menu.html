@@ -1,0 +1,163 @@
+<dom-module id="custom-menu">
+    <template>
+        <style>
+            /* ====================== top navbar =============*/
+            
+            .navbar-principal {
+                background-color: #39bbdb;
+                border-color: #39bbdb;
+                box-shadow: 0 2px 2px -2p xrgba(0, 0, 0, .52);
+            }
+            
+            .navbar-principal .img-logo {
+                width: 28px;
+                height: 28px;
+                display: inline-block;
+            }
+            
+            .navbar-principal .navbar-brand,
+            .navbar-principal .navbar-brand li a:visited,
+            .navbar-principal .navbar-nav li a {
+                color: #fff;
+                font-weight: 500;
+            }
+            
+            .navbar-cover .navbar-nav li a {
+                color: #66757f;
+                font-weight: 500;
+            }
+            
+            .navbar-principal .navbar-nav .open a,
+            .navbar-principal .navbar-nav .open a:hover,
+            .navbar-principal .navbar-nav li a:hover,
+            .navbar-principal .navbar-nav li a:focus,
+            .navbar-principal .navbar-nav .active a,
+            .navbar-principal .navbar-nav .active a:hover {
+                color: #fff;
+                background: rgba(0, 0, 0, .2);
+            }
+            
+            .navbar-cover .navbar-nav li a:hover {
+                background-color: #f9f9f9;
+            }
+            
+            .navbar-principal .navbar-form .input-group input {
+                height: 35px;
+                ;
+            }
+            
+            .navbar-principal .input-group-addon {
+                background-color: #FFFFFF;
+                border: 1px solid #E3E3E3;
+                border-left: 0px solid #E3E3E3;
+            }
+            
+            .navbar-principal .navbar-brand:hover {
+                color: #fff;
+                font-weight: 500;
+            }
+            
+            .navbar-principal .dropdown-menu .notification-row a {
+                color: #337ab7;
+            }
+            
+            .navbar-principal a i {
+                font-size: 20px;
+            }
+            
+            .img-nav {
+                width: 25px;
+                height: 25px;
+                margin-top: -3px;
+            }
+            
+            .form-control,
+            .input-group-addon {
+                -webkit-transition: all 300ms linear;
+                -moz-transition: all 300ms linear;
+                -o-transition: all 300ms linear;
+                -ms-transition: all 300ms linear;
+                transition: all 300ms linear;
+            }
+            
+        </style>
+        <header>
+            <nav class="navbar navbar-default navbar-fixed-top navbar-principal">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#/home">
+                            <b>Sacolei</b>
+                        </a>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                            aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="fa fa-bars"></span> 
+                    </button>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <div class="col-sm-5">
+                            <form class="navbar-form">
+                                <div class="form-group" style="display:inline;">
+                                    <div class="input-group" style="display:table;">
+                                        <input class="form-control" name="search" placeholder="Procurar..." autocomplete="off" type="text"></input>
+                                        <span class="input-group-addon" style="width:1%;">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li hidden$="[[!signedIn]]">
+                                <a href="#/profile">{{user.displayName}}&nbsp;<img class="img-nav" src="{{user.photoURL}}" width="40px">
+                            </a>
+                            </li>
+                            <li><a href="#/home"><i class="fa fa-bars"></i>&nbsp;Home</a></li>
+
+                            <li><a href="messages.html"><i class="fa fa-comments"></i></a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages<span class="caret"></span>
+                            </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" onclick="javascript:signOut();">Sair</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#loginModal">Abrir</a></li>
+                                    <li><a href="#/photos">Photos</a></li>
+                                    <li><a href="#/view_photo">View photo</a></li>
+                                    <li><a href="friends.html">Friends</a></li>
+                                    <li><a href="user_detail.html">User detail</a></li>
+                                    <li><a href="list_users.html">List users</a></li>
+                                    <li><a href="file_manager.html">File manager</a></li>
+                                    <li><a href="profile_settings.html">Profile settings</a></li>
+                                    <li><a href="people_directory.html">User directory</a></li>
+                                    <li><a href="About.html">About</a></li>
+                                    <li><a href="edit_profile.html">Edit profile</a></li>
+                                    <li><a href="notifications.html">Notifications</a></li>
+                                    <li><a href="blank-cover.html">Blank cover</a></li>
+                                    <li><a href="list_posts.html">List posts</a></li>
+                                    <li><a href="registration_email.html">Registration email</a></li>
+                                    <li><a href="grid_posts.html">Grid posts</a></li>
+                                    <li><a href="error404.html">Error 404</a></li>
+                                    <li><a href="error500.html">Error 500</a></li>
+                                    <li><a href="recover_password.html">Recover password</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </template>
+
+    <script>
+        Polymer({
+            is: "custom-menu",
+            ready: function() {
+
+            },
+            properties: {
+
+            }
+        });
+    </script>
+
+</dom-module>

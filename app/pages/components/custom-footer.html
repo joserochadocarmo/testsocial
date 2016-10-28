@@ -1,0 +1,55 @@
+<dom-module id="custom-footer">
+    <template>
+        <style>
+
+            .welcome-footer {
+                width: 100%;
+                height: 60px;
+                margin-top: 9px;
+                background-color: #fff;
+            }
+            
+            .welcome-footer .container {
+                width: auto;
+                max-width: 680px;
+                padding: 0 15px;
+            }
+            
+            .welcome-footer a {
+                color: #39bbdb;
+            }
+            
+            .welcome-footer .container .text-muted {
+                margin: 1px 0;
+            }
+        </style>
+
+        <footer class="welcome-footer">
+            <div class="container">
+                <p>
+                    <div class="footer-links">
+                        <a href="#">Terms of Use</a> |
+                        <a href="#">Privacy Policy</a> |
+                        <a href="#">Developers</a> |
+                        <a href="#">Contact</a> |
+                        <a href="#">About</a>
+                    </div>
+                    Copyright &copy; Company - All rights reserved
+                </p>
+            </div>
+        </footer>
+
+    </template>
+    <script>
+        Polymer({
+            is: "custom-footer",
+            ready: function() {
+                
+            },
+            properties: {
+                
+            }
+        });
+    </script>
+
+</dom-module>

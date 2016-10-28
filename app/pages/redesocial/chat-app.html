@@ -1,0 +1,79 @@
+<link rel="import" href="../components/custom-fab.html">
+<dom-module id="chat-app">
+    <template>
+        <style>
+            .trigger-iFrame,
+            .trigger-iFrame-2,
+            .trigger-iFrame-3,
+            .trigger-iFrame-4 {
+                font-size: 20px;
+                background: #F04903;
+                color: white;
+                width: 300px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+                overflow: hidden;
+            }
+            
+            p {
+                padding: 15px;
+                font-size: 20px;
+                text-align: justify;
+            }
+            
+            .iziModal .iziModal-header-title,
+            .iziModal-header-subtitle {
+                font-family: Lato;
+                font-weight: 100;
+                font-size: 25px;
+            }
+            
+            .iziModal {
+                left: 80%;
+            }
+        </style>
+        <!--botao do chat-->
+        <custom-fab></custom-fab>
+        <div style="padding-rigth:15px;">
+            <div id="modal-iFrame" class="iziModal"></div>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            is: "chat-app",
+            ready: function() {
+                this._inicializaModal();
+            },
+            properties: {
+                
+            },
+            _inicializaModal: function(){
+                 var panel = document.querySelector('#modal-iFrame');
+                 $(panel).iziModal({
+                    title: 'The Mountain', //Modal title
+                    subtitle: 'A gorgeous nature time lapse.', //Modal subtitle
+                    fullscreen: true, //Icon to expand modal to fullscreen
+                    headerColor: '#1F8CEB', //Color of modal header. Hexa colors allowed.
+                    overlay: false,
+                    iconColor: '',
+                    attached: 'bottom',
+                    iconClass: 'icon-chat',
+                    rtl: false,
+                    width: 300,
+                    padding: 0,
+                    transitionIn: 'fadeInUp',
+                    transitionOut: 'bounceOutDown',
+                    iframe: true, //In this example, this flag is mandatory. Izimodal needs to understand you will call an iFrame from here
+                    iframeURL: "https://player.vimeo.com/video/22439234?autoplay=1" //Link will be opened inside modal
+                });
+            },
+            open: function(){
+                var panel = document.querySelector('#modal-iFrame');
+                // $(panel).iziModal({
+            }
+        });
+    </script>
+
+</dom-module>

@@ -1,0 +1,67 @@
+<link rel="import" href="components/custom-login.html">
+<link rel="import" href="components/custom-menu.html">
+<link rel="import" href="components/custom-footer.html">
+<link rel="import" href="components/custom-sidenav.html">
+<link rel="import" href="components/custom-actions.html">
+<link rel="import" href="page-feiras.html">
+
+<!--Rede Social components-->
+<link rel="import" href="redesocial/capa-perfil.html">
+<link rel="import" href="redesocial/make-a-post.html">
+<link rel="import" href="redesocial/box-post.html">
+<link rel="import" href="redesocial/chat-app.html">
+
+<dom-module id="app-social">
+    <template>
+
+        <firebase-app auth-domain="project-7228392500579219360.firebaseapp.com" database-url="https://project-7228392500579219360.firebaseio.com"
+            api-key="AIzaSyAXZfyx1shQBDZ3THbqdQnEaHUqFaPGX8g" storageBucket="project-7228392500579219360.appspot.com" messagingSenderId="709259484417"></firebase-app>
+
+        <!--componente que repassa o usuário logado-->
+        <firebase-auth id="auth" user="{{user}}" signed-in="{{signedIn}}" on-error="handleError"></firebase-auth>
+
+        <!--Janela de login-->
+        <custom-login id="login"></custom-login>
+
+        <!--Menu-->
+        <custom-menu user=[[user]] signed-in="[[signedIn]]"></custom-menu>
+
+        <!--Tela lateral, somente mobile-->
+        <custom-sidenav></custom-sidenav>
+        
+        <!--Aplicativo de chat-->
+        <chat-app></chat-app>
+
+        <!--Rotas-->
+        <app-router>
+
+            <app-route path="" import="pages/redesocial/page-home.html"></app-route>
+
+            <app-route path="/home" import="pages/redesocial/page-home.html"></app-route>
+
+            <app-route path="/profile" import="pages/redesocial/page-profile.html" hidden$="[[!signedIn]]"></app-route>
+
+            <app-route path="/photos" import="pages/redesocial/page-photos.html" hidden$="[[!signedIn]]"></app-route>
+
+            <app-route path="/view_photo/:id" import="pages/redesocial/view-photo.html" hidden$="[[!signedIn]]"></app-route>
+
+            <app-route path="/contato" import="pages/page-contato.html"></app-route>
+
+            <app-route path="/feiras" import="pages/page-feiras.html" hidden$="[[!signedIn]]"></app-route>
+
+            <!-- matches everything else -->
+            <app-route path="*" import="pages/page-error.html"></app-route>
+        </app-router>
+
+        <!--Footer-->
+        <custom-footer></custom-footer>
+
+    </template>
+
+    <script>
+        Polymer({
+            is: "app-social"
+        });
+    </script>
+
+</dom-module>

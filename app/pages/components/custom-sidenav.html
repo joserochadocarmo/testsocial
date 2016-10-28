@@ -1,0 +1,32 @@
+<dom-module id="custom-sidenav">
+    <template>
+        <style>
+
+        </style>
+    </template>
+    <script>
+        Polymer({
+            is: "custom-sidenav",
+            ready: function() {
+                // var panel = document.querySelector('#panel');
+                // var menu = Polymer.dom(this.root).querySelector('#menu');
+                // this.slideout = new Slideout({
+                //     'panel': panel,
+                //     'menu': menu,
+                //     'padding': 256,
+                //     'tolerance': 70,
+                // });   
+            },
+            properties: {
+                slideout: {
+                    type: Object
+                }
+                
+            },
+            toggle: function(){
+                this.slideout.toggle();
+            }
+        });
+    </script>
+
+</dom-module>
